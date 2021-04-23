@@ -10,6 +10,14 @@ These instructions will get you a copy of the project up and running on your loc
 
 Works with Ansible version 2.9, and has not yet been tested on version 3.0 or above.
 
+Debian
+```
+sudo apt install python3-pip
+sudo -H pip3 install ansible
+sudo -H pip3 install jmespath
+```
+
+
 ### Installation of Playbook
 Be advised, this playbook contains `vars_prompt` and requires user input
 
