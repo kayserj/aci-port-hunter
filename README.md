@@ -56,6 +56,7 @@ This tool was split into two functioning roles to account for the need of a chan
 
 * [Ansible](https://www.ansible.com/)
 * [Jmespath](https://jmespath.org/)
+* [jinja2](https://jinja2docs.readthedocs.io/en/stable/)
 
 
 ### Authors
