@@ -7,7 +7,6 @@
   vars:
    msg: |
               Check the readme.md file for instructions on how to install and use this script.
-              Playbook must run with a tag option. No tag, no data.
 
               For Password Based Authentication
                  ansible-playbook -i aci_hosts findport-aci.yml
