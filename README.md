@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Works with Ansible version 2.9, and has not yet been tested on version 3.0 or above.
+Tested working with Ansible 3.3
 
 Debian
 ```
@@ -55,6 +55,7 @@ This tool was split into two functioning roles to account for the need of a chan
 ### Built With
 
 * [Ansible](https://www.ansible.com/)
+* [Jmespath](https://jmespath.org/)
 
 
 ### Authors
