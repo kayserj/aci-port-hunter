@@ -1,0 +1,12 @@
+---
+- name: Disabling {{ item | regex_replace("(topology\/pod-)", "Pod-") | regex_replace("(\/paths-)", " | Node-") | regex_replace("(\/pathep-)", " | Int-") }}
+  aci_rest:
+    host: "{{ inventory_hostname }}"
+    username: "{{ user }}"
+    password: "{{ pass }}"
+    use_ssl: yes
+    validate_certs: false
+    path: "{{ api_uni_path }}"
+    method: post
+    content: '{{ lookup("template", "{{ outer_item.aci_query_title }}.j2") }}'
+  tags: pass

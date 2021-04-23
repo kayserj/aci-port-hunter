@@ -1,0 +1,23 @@
+---
+- name: Setting Interface List Directory
+  set_fact:
+    list_dir: '~/ansible_intf_lists'
+  tags: always
+
+- name: Applying API Path JSON Query Filter
+  set_fact:
+    api_uni_path: '/api/node/mo/uni/fabric/outofsvc.json'
+  tags: always
+
+- name: ~~~EXECUTION CONFIRMATION~~~
+  pause:
+    prompt: "Disable physical ports that are down and in discovery? (yes/no)"
+  register: confirm_blacklist
+  tags: always
+
+- name: Including Tasks
+  include_tasks: shutports.yml
+  loop: '{{ query_facts }}'
+  loop_control:
+    loop_var: outer_item
+  tags: always

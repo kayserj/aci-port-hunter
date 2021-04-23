@@ -1,0 +1,26 @@
+---
+- name: Run Query
+  include_tasks: run-get.yml
+  tags: always
+
+- name: Query Processing
+  include_tasks: query-processing.yml
+  tags: always
+
+# Redundant step, but will allow for future regex insertion
+- name: Setting Post-filter
+  set_fact:
+    aci_filtered: '{{ aci_prefilter }}'
+  tags: always
+
+# To remove any added regex from the output, change content to be aci_prefilter
+- name: Writing Response to Disk
+  copy: 
+    content: '{{ aci_filtered }}' 
+    dest: '{{ list_dir.path }}/{{ item.aci_query_title }}.json'
+  tags: always
+
+- name: Appending Output to Interface List
+  set_fact:
+    intf_list: '{{ intf_list + [ aci_filtered ] }}'
+  tags: always

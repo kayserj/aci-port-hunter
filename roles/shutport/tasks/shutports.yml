@@ -1,0 +1,16 @@
+---
+- name: Looking up JSON payloads
+  set_fact:
+    aci_response: '{{ lookup("file", "{{ list_dir }}/{{ outer_item.aci_query_title }}.json") }}'
+  tags: always
+
+- name: Setting Post-filter
+  set_fact:
+    aci_filtered: '{{ aci_response | regex_replace("node-", "paths-") | regex_replace("(\]\/phys|\]\/aggrif)", "]") | regex_replace("(sys/phys-|sys/aggr-)", "pathep-") }}'
+  tags: always
+  
+- name: Post JSON Data
+  include_tasks: run-post.yml
+  when: confirm_blacklist.user_input | bool
+  loop: '{{ aci_filtered }}'
+  tags: always

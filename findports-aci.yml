@@ -1,0 +1,41 @@
+---
+# Ansible Cisco ACI Port Hunter Tool by James Kayser
+# main playbook
+- hosts: localhost
+  gather_facts: false
+
+  vars:
+   msg: |
+              Check the readme.md file for instructions on how to install and use this script.
+              Playbook must run with a tag option. No tag, no data.
+
+              For Password Based Authentication
+                 ansible-playbook -i aci_hosts findport-aci.yml
+
+  tasks:
+    - name: "Instructions"
+      debug:
+        msg: "{{ msg.split('\n') }}"
+      tags: always             
+
+- hosts: apic
+  any_errors_fatal: false
+  roles:
+    - role: findport
+
+  vars_prompt:
+
+  - name: "apic_ip"
+    prompt: "Enter your APIC IP Address"
+    private: no
+
+  - name: "user"
+    prompt: "Enter your APIC Username  Default"
+    private: no
+    unsafe: yes
+    default: 'admin'
+
+  - name: "pass"
+    prompt: "Enter your APIC Password"
+    private: yes
+    unsafe: yes

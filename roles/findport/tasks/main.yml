@@ -1,0 +1,17 @@
+---
+- name: "Creating List Directory"
+  file:
+    path: '~/ansible_intf_lists'
+    state: directory
+  register: list_dir
+  tags: always
+
+- name: Loading Port Finder
+  include_tasks: findports.yml
+  loop: "{{ query_facts }}"
+  tags: always
+
+- name: Displaying List of Down Ports in Discovery
+  debug:
+    msg: "{{ intf_list }}"
+  tags: always

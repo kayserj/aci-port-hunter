@@ -1,0 +1,9 @@
+---
+ansible_connection: local
+ansible_python_interpreter: /usr/bin/python3
+cert_user: automation_acct
+intf_list: []
+aci_response: []
+query_facts: 
+  - { aci_query_title: 'phys_interfaces', api_query_filter: '/api/node/class/ethpmPhysIf.json?query-target-filter=and(eq(ethpmPhysIf.operSt,"down"),eq(ethpmPhysIf.usage,"discovery"))', json_query_filter: 'imdata[*].ethpmPhysIf.attributes.dn' }
+#  - { aci_query_title: 'aggr_interfaces', api_query_filter: '/api/node/class/pcAggrIf.json?query-target-filter=and(eq(pcAggrIf.adminSt,"up"),eq(pcAggrIf.usage,"discovery"))', json_query_filter: 'imdata[*].pcAggrIf.attributes.dn' }

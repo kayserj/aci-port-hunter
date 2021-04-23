@@ -1,0 +1,5 @@
+---
+- name: Setting Pre-filter
+  set_fact:
+    aci_prefilter: '{{ aci_response | json_query(item.json_query_filter) }}'
+  tags: always
