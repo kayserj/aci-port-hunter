@@ -41,5 +41,20 @@ Running `findports-aci.yml` will query your fabric for ports that are operationa
 
 Running `shutports-aci.yml` will load and examine the outputted interface list from `findports-aci.yml` in your users home directory, and procede to disable (blacklist) those interfaces.
 
-This tool was split into two functioning roles to account for the need of a change management approval process.
+This tool was split into two functioning roles to account for the need of a change management approval process.  
+
+
+### Built With
+
+* [Ansible](https://www.ansible.com/)
+
+
+### Authors
+
+* **James Kayser** - *Initial work* - [kayserj](https://github.com/kayserj)
+
+### License
+
+GNU GPLv3
+
 
