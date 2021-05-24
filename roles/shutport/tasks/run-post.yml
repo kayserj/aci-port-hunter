@@ -1,6 +1,6 @@
 ---
 - name: Disabling {{ item | regex_replace("(topology\/pod-)", "Pod-") | regex_replace("(\/paths-)", " | Node-") | regex_replace("(\/pathep-)", " | Int-") }}
-  aci_rest:
+  cisco.aci.aci_rest:
     host: "{{ inventory_hostname }}"
     username: "{{ user }}"
     password: "{{ pass }}"

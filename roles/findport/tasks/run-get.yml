@@ -1,6 +1,6 @@
 ---
 - name: Query {{ item.aci_query_title | regex_replace('_', ' ') }}
-  aci_rest:
+  cisco.aci.aci_rest:
     host: "{{ inventory_hostname }}"
     username: "{{ user }}"
     password: "{{ pass }}"
